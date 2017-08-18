@@ -1,17 +1,16 @@
 import axios from 'axios'
-
+const ENDPOINT = "http://localhost:9001/"
 const API = {
     /**
-    * Call GeoServer and get XML data
+    * Call the API and get todo's data
     * @param callback function to call when data is fully loaded
     */
-    getContent(callback) {
+    getTodos(callback) {
         axios
-            .get(ENDPOINT + '?request=GetCapabilities')
+            .get(ENDPOINT + 'tasks')
             .then((response) => {
-                //GeoAPI.parseXMLResponse(response, callback);
                 callback({
-                    xmlData: response
+                    data: response.data.tasks
                 })
             })
             .catch((error) => {

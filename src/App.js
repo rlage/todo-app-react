@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { populateApp } from './actions/actions.js'
@@ -11,14 +11,11 @@ import API from './api/api.js'
 
 const store = createStore(appReducer, applyMiddleware(logger))
 
-const ajaxCallback = (xmlData) => {
-    store.dispatch(populateApp(xmlData))
+const ajaxCallback = (data) => {
+    store.dispatch(populateApp(data))
 };
-GeoAPI.getContent(ajaxCallback)
+API.getTodos(ajaxCallback)
 
-const placesCallback = (xmlData) => {
-    store.dispatch(populatePlaces(xmlData))
-};
 
 const App = () => {
     return (
