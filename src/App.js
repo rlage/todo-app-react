@@ -5,9 +5,22 @@ import { populateApp } from './actions/actions.js'
 import { applyMiddleware, createStore } from 'redux'
 import appReducer from './appReducer.js'
 import { Provider } from 'react-redux'
+import logger from 'redux-logger'
+import API from './api/api.js'
 
-class App extends Component {
-  render() {
+
+const store = createStore(appReducer, applyMiddleware(logger))
+
+const ajaxCallback = (xmlData) => {
+    store.dispatch(populateApp(xmlData))
+};
+GeoAPI.getContent(ajaxCallback)
+
+const placesCallback = (xmlData) => {
+    store.dispatch(populatePlaces(xmlData))
+};
+
+const App = () => {
     return (
       <div className="App">
         <div className="App-header">
@@ -19,7 +32,6 @@ class App extends Component {
         </p>
       </div>
     );
-  }
 }
 
 export default App;
