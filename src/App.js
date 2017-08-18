@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { populateApp } from './actions/actions.js'
 import { applyMiddleware, createStore } from 'redux'
@@ -7,6 +6,7 @@ import appReducer from './appReducer.js'
 import { Provider } from 'react-redux'
 import logger from 'redux-logger'
 import API from './api/api.js'
+import TasksListContainer from './TasksList/TasksListContainer.js'
 
 
 const store = createStore(appReducer, applyMiddleware(logger))
@@ -19,15 +19,9 @@ API.getTodos(ajaxCallback)
 
 const App = () => {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Provider store={store}>
+        <TasksListContainer/>
+      </Provider>
     );
 }
 

@@ -1,5 +1,5 @@
 // on App.js
-export const populateApp = (data) => {
+export const populateApp = ({data}) => {
     return {
         type: 'POPULATE_APP',
         data,
