@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { populateApp } from './actions/actions.js'
+import { applyMiddleware, createStore } from 'redux'
+import appReducer from './appReducer.js'
+import { Provider } from 'react-redux'
 
 class App extends Component {
   render() {
