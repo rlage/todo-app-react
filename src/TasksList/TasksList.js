@@ -1,6 +1,7 @@
 import React from 'react';
+import AddTask from '../AddTask/AddTask';
 
-const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo}) => {
+const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInputAddTodo}) => {
   var classShow = "show"
   var classHide = "hide"
 
@@ -34,8 +35,10 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo}) => {
       
     }
     return (
+      <div>
+        <h1> Tasks </h1>
+          <AddTask tasks={tasks} onInputAddTodo={onInputAddTodo}/>
         <ul className="tasksList">
-          <h1> Tasks </h1>
           {
             tasks.map(t => (
               <div className="task-block" key={t.id}>
@@ -54,9 +57,15 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo}) => {
             ))
           }
         </ul>
+      </div>
     );
   } else {
-    return null
+    return (
+      <div>
+        <h1> Tasks </h1>
+        <AddTask tasks={tasks} onInputAddTodo={onInputAddTodo}/>
+      </div>
+    )
   }
 }
 

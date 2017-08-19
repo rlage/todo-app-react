@@ -34,6 +34,24 @@ const API = {
                 return console.log(error)
             })
     },
+    /**
+    * Call the API and add todo's data
+    * @param callback function to call after response
+    * @param todo 
+    */
+    addTodo(callback, todo) {
+        axios
+            .post(ENDPOINT + 'task/create/'+todo.title+'/'+todo.description)
+            .then((response) => {
+                console.log(response)
+                callback({
+                    data: response.data.task
+                })
+            })
+            .catch((error) => {
+                return console.log(error)
+            })
+    },
 }
 
 export default API
