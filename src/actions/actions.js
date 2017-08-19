@@ -5,3 +5,18 @@ export const populateApp = ({data}) => {
         data,
     }
 }
+
+// on TasksList.js
+export const enableEdit = (data) => {
+    return {
+        type: 'ENABLE_EDIT',
+        data,
+    }
+}
+
+export const edit = (data) => {
+    return {
+        type: 'EDIT',
+        data,
+    }
+}

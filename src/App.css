@@ -19,3 +19,14 @@
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
+
+.hide {
+  display: none; }
+
+.show {
+  display: block; }
+
+.description {
+  font-size: 10px;
+  color: grey;
+  margin: 5px; }

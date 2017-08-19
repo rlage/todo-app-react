@@ -3,7 +3,12 @@ const appReducer = (state = [], action) => {
         case 'POPULATE_APP':
             return {
                 tasks: action.data,
-            };
+            }
+        case 'ENABLE_EDIT':
+        return {
+            ...state,
+            enableEdit: action.data,
+        }
         default:
             return state
     }
