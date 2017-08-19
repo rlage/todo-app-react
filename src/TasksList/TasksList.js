@@ -23,15 +23,19 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputEnterKey}) => {
     }
     return (
         <ul className="tasksList">
+          <h1> Tasks </h1>
           {
             tasks.map(t => (
-              <div key={t.id}>
-                <li className={ t.id === enableEdit ? classHide : classShow} onDoubleClick={(e) => handleDoubleClick(e)} data-id={t.id}> {t.title}
+              <div className="task-block" key={t.id}>
+                <li className={t.id === enableEdit ? classHide : classShow} onDoubleClick={(e) => handleDoubleClick(e)} data-id={t.id}> {t.title}
                   <div className="description"> {t.description} </div>
                 </li>
                 <li className={t.id === enableEdit ? classShow : classHide}> 
-                  <input data-id={t.id} onKeyUp={(e) => handleEnterKey(e)} type="text" size="35" defaultValue={t.title}/>
-                  <input data-id={t.id} onKeyUp={(e) => handleEnterKey(e)} type="textArea" size="35" defaultValue={t.description}/>
+                  <h2> Edit task: </h2>
+                  <div className="edit-group">
+                    Title: <input data-id={t.id} onKeyUp={(e) => handleEnterKey(e)} type="text" size="35" defaultValue={t.title}/>
+                    Description: <textarea data-id={t.id} onKeyUp={(e) => handleEnterKey(e)} defaultValue={t.description}/>
+                  </div>
                 </li>
               </div>
             ))
