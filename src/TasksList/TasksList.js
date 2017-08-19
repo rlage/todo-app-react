@@ -6,7 +6,13 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputEnterKey}) => {
 
   if (tasks && tasks.length > 0) {
     const handleDoubleClick = (e) => {
-      onTodoDoubleClick(parseInt(e.target.dataset.id,10))
+      var id
+      if(e.target.dataset.id){
+        id = parseInt(e.target.dataset.id,10)
+      } else {
+        id = parseInt(e.target.parentElement.dataset.id,10)
+      }
+      onTodoDoubleClick(id)
     }
 
     const handleEnterKey = (e) => {
