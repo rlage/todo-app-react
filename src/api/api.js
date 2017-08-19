@@ -22,12 +22,12 @@ const API = {
     * @param callback function to call after response
     * @param todo 
     */
-    getTodos(callback) {
+    editTodo(callback, todo) {
         axios
-            .get(ENDPOINT + 'tasks')
+            .put(ENDPOINT + 'task/update/'+todo.id+'/'+todo.title+'/'+todo.description)
             .then((response) => {
                 callback({
-                    data: response.data.tasks
+                    data: response.data.task
                 })
             })
             .catch((error) => {

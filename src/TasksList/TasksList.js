@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputEnterKey}) => {
+const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo}) => {
   var classShow = "show"
   var classHide = "hide"
 
@@ -15,11 +15,23 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputEnterKey}) => {
       onTodoDoubleClick(id)
     }
 
-    const handleEnterKey = (e) => {
-      if (e.keyCode === 13) {
-        console.log("enter")
+    const handleSaveClick = (e) => {
+      var nodes = Array.from(e.target.parentNode.childNodes)
+      var inputs = nodes.filter(n => {
+        if(n.dataset && n.dataset.id){
+          return n
+        }
+        return false
+      })
+      var inputTitle = inputs[0]
+      var inputDescription = inputs[1]
+      var todo = {
+        id: inputTitle.dataset.id,
+        title: inputTitle.value,
+        description: inputDescription.value,
       }
-      onInputEnterKey(parseInt(e.target.dataset.id,10))
+      onInputSaveTodo(todo)
+      
     }
     return (
         <ul className="tasksList">
@@ -33,8 +45,9 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputEnterKey}) => {
                 <li className={t.id === enableEdit ? classShow : classHide}> 
                   <h2> Edit task: </h2>
                   <div className="edit-group">
-                    Title: <input data-id={t.id} onKeyUp={(e) => handleEnterKey(e)} type="text" size="35" defaultValue={t.title}/>
-                    Description: <textarea data-id={t.id} onKeyUp={(e) => handleEnterKey(e)} defaultValue={t.description}/>
+                    Title: <input data-id={t.id} type="text" size="35" defaultValue={t.title}/>
+                    Description: <textarea data-id={t.id} cols="35" defaultValue={t.description}/>
+                    <button onClick={(e) => handleSaveClick(e)}> Save </button>
                   </div>
                 </li>
               </div>

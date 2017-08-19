@@ -14,7 +14,7 @@ export const enableEdit = (data) => {
     }
 }
 
-export const edit = (data) => {
+export const edit = ({data}) => {
     return {
         type: 'EDIT',
         data,

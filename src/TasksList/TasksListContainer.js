@@ -1,6 +1,7 @@
 import TasksList from './TasksList'
 import { connect } from 'react-redux'
 import { enableEdit, edit } from '../actions/actions.js'
+import API from '../api/api.js'
 
 const mapStateToProps = (state) => {
     return {
@@ -14,8 +15,11 @@ const mapDispatchToProps = (dispatch) => {
         onTodoDoubleClick: (item) => {
             dispatch(enableEdit(item))
         },
-        onInputEnterKey: (item) => {
-            dispatch(edit(item))
+        onInputSaveTodo: (item) => {
+            const ajaxCallback = (item) => {
+                dispatch(edit(item))
+            };
+            API.editTodo(ajaxCallback, item)
         },
     }
 }
