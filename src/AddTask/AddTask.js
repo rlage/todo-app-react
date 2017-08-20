@@ -23,7 +23,7 @@ const AddTask = ({tasks, onInputAddTodo}) => {
   }
   return (
       <div>
-        <h2> Add task: </h2>
+        <h2> Add task </h2>
         <div className="edit-group">
           Title: <input data-id="-1" type="text" size="35" placeholder="Fill with task title"/>
           Description: <textarea data-id="-1" cols="35" placeholder="Fill with task description"/>

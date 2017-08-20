@@ -1,5 +1,6 @@
 import React from 'react';
 import AddTask from '../AddTask/AddTask';
+import removeImg from '../images/remove.png';
 
 const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInputAddTodo}) => {
   var classShow = "show"
@@ -31,18 +32,19 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInp
         title: inputTitle.value,
         description: inputDescription.value,
       }
-      onInputSaveTodo(todo)
-      
+      onInputSaveTodo(todo)  
     }
     return (
-      <div>
-        <h1> Tasks </h1>
+      <div className="app">
           <AddTask tasks={tasks} onInputAddTodo={onInputAddTodo}/>
         <ul className="tasksList">
+
+          <h2> Tasks </h2>
           {
             tasks.map(t => (
               <div className="task-block" key={t.id}>
-                <li className={t.id === enableEdit ? classHide : classShow} onDoubleClick={(e) => handleDoubleClick(e)} data-id={t.id}> {t.title}
+                <img className="remove-img" src={removeImg}/>
+                <li className={t.id === enableEdit ? classHide : classShow} onClick={(e) => handleDoubleClick(e)} data-id={t.id}> {t.title}
                   <div className="description"> {t.description} </div>
                 </li>
                 <li className={t.id === enableEdit ? classShow : classHide}> 

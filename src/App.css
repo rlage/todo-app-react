@@ -10,6 +10,14 @@ ul {
   margin-top: 20px;
   margin-left: 5px; }
 
+.app {
+  margin: 0 auto;
+  width: 50%; }
+
+.task-block li {
+  background-color: #f4f4f4;
+  padding: 10px; }
+
 .hide {
   display: none; }
 
@@ -24,4 +32,9 @@ ul {
 input, textarea {
   display: block;
   margin-top: 10px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  width: 100%; }
+
+.remove-img {
+  width: 10px;
+  float: left; }
