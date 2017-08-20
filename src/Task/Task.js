@@ -1,5 +1,6 @@
 import React from 'react';
 import removeImg from '../images/remove.png'
+import TaskForm from '../TaskForm/TaskForm'
 
 const Task = ({task, enableEdit, handleRemoveClick, handleSaveClick, handleEditClick}) => {
   var classShow = "show"
@@ -12,11 +13,8 @@ const Task = ({task, enableEdit, handleRemoveClick, handleSaveClick, handleEditC
         <div className="description"> {task.description} </div>
       </li>
       <li className={task.id === enableEdit ? classShow : classHide}>
-        <h2> Edit task </h2>
         <div className="edit-group">
-          Title: <input data-id={task.id} type="text" size="35" defaultValue={task.title} />
-          Description: <textarea data-id={task.id} cols="35" defaultValue={task.description} />
-          <button onClick={(e) => handleSaveClick(e)}> Save </button>
+          <TaskForm task={task} handleButtonClick={handleSaveClick}/>
         </div>
       </li>
     </div>

@@ -40,6 +40,8 @@ const appReducer = (state = [], action) => {
       newTasks = state.tasks.filter(t => {
         if (t.id !== task.id) {
           return t
+        } else {
+          return false
         }
       })
       console.log(newTasks)

@@ -1,9 +1,33 @@
 import React from 'react'
-import AddTask from '../AddTask/AddTask'
+import TaskForm from '../TaskForm/TaskForm'
 import Task from '../Task/Task'
 
 const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInputAddTodo, onClickRemove}) => {
 
+  const handleAddClick = (e) => {
+    var nodes = Array.from(e.target.parentNode.childNodes)
+    var inputs = nodes.filter(n => {
+      if(n.dataset && n.dataset.id){
+        return n
+      } else {
+        return false
+      }
+    })
+    var inputTitle = inputs[0]
+    var inputDescription = inputs[1]
+    var lastItemId = tasks.length > 0 ? tasks[tasks.length-1].id : 0
+    var todo = {
+      id: lastItemId+1,
+      title: inputTitle.value,
+      description: inputDescription.value,
+    }
+    if(todo.title === "" || todo.description === "") {
+      return false
+    }
+    onInputAddTodo(todo)
+      
+  }
+  
   if (tasks && tasks.length > 0) {
     const handleEditClick = (e) => {
       var id
@@ -53,7 +77,7 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInp
     
     return (
       <div>
-          <AddTask tasks={tasks} onInputAddTodo={onInputAddTodo}/>
+          <TaskForm tasks={tasks} handleButtonClick={handleAddClick}/>
         <ul className="tasksList">
 
           <h2> Tasks </h2>
@@ -68,7 +92,7 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInp
   } else {
     return (
       <div>
-        <AddTask tasks={tasks} onInputAddTodo={onInputAddTodo}/>
+        <TaskForm tasks={tasks} handleButtonClick={handleAddClick}/>
         <ul className="tasksList">
           <h2> Tasks </h2>
         </ul>
