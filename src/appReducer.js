@@ -25,11 +25,11 @@ const appReducer = (state = [], action) => {
         enableEdit: undefined,
       }
     case 'ADD':
-      var task = action.data
-      var newTasks = []
+      task = action.data
+      newTasks = []
       newTasks = state.tasks.slice()
       newTasks.push(task)
-      
+
       return {
         ...state,
         tasks: newTasks,

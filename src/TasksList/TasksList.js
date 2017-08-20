@@ -43,7 +43,7 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInp
           {
             tasks.map(t => (
               <div className="task-block" key={t.id}>
-                <img className="remove-img" src={removeImg}/>
+                <img alt="remove button" className={"remove-img "+(t.id === enableEdit ? classHide : classShow)} src={removeImg}/>
                 <li className={t.id === enableEdit ? classHide : classShow} onClick={(e) => handleDoubleClick(e)} data-id={t.id}> {t.title}
                   <div className="description"> {t.description} </div>
                 </li>

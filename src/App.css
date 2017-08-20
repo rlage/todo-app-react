@@ -16,7 +16,7 @@ ul {
 
 .task-block li {
   background-color: #f4f4f4;
-  padding: 10px; }
+  margin: 10%; }
 
 .hide {
   display: none; }
@@ -27,7 +27,8 @@ ul {
 .description {
   font-size: 10px;
   color: grey;
-  margin: 5px; }
+  margin: 5px;
+  word-break: break-all; }
 
 input, textarea {
   display: block;
@@ -36,5 +37,9 @@ input, textarea {
   width: 100%; }
 
 .remove-img {
-  width: 10px;
+  height: 100%;
+  margin: 5px;
+  width: 5%;
+  min-width: 15px;
+  max-width: 50px;
   float: left; }
