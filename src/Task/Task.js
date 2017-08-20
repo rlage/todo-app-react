@@ -2,7 +2,7 @@ import React from 'react';
 import removeImg from '../images/remove.png'
 import TaskForm from '../TaskForm/TaskForm'
 
-const Task = ({task, enableEdit, handleRemoveClick, handleSaveClick, handleEditClick}) => {
+const Task = ({task, enableEdit, handleRemoveClick, handleSaveClick, handleEditClick, editAction}) => {
   var classShow = "show"
   var classHide = "hide"
 
@@ -14,7 +14,7 @@ const Task = ({task, enableEdit, handleRemoveClick, handleSaveClick, handleEditC
       </li>
       <li className={task.id === enableEdit ? classShow : classHide}>
         <div className="edit-group">
-          <TaskForm task={task} handleButtonClick={handleSaveClick}/>
+          <TaskForm task={task} handleButtonClick={handleSaveClick} editAction={editAction}/>
         </div>
       </li>
     </div>
