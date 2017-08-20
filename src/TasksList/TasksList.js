@@ -1,13 +1,11 @@
-import React from 'react';
-import AddTask from '../AddTask/AddTask';
-import removeImg from '../images/remove.png';
+import React from 'react'
+import AddTask from '../AddTask/AddTask'
+import Task from '../Task/Task'
 
 const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInputAddTodo, onClickRemove}) => {
-  var classShow = "show"
-  var classHide = "hide"
 
   if (tasks && tasks.length > 0) {
-    const handleDoubleClick = (e) => {
+    const handleEditClick = (e) => {
       var id
       if(e.target.dataset.id){
         id = parseInt(e.target.dataset.id,10)
@@ -61,20 +59,7 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInp
           <h2> Tasks </h2>
           {
             tasks.map(t => (
-              <div className="task-block" key={t.id}>
-                <img onClick={(e) => handleRemoveClick(e)} alt="remove button" className={"remove-img "+(t.id === enableEdit ? classHide : classShow)} src={removeImg}/>
-                <li className={t.id === enableEdit ? classHide : classShow} onClick={(e) => handleDoubleClick(e)} data-id={t.id}> {t.title}
-                  <div className="description"> {t.description} </div>
-                </li>
-                <li className={t.id === enableEdit ? classShow : classHide}> 
-                  <h2> Edit task: </h2>
-                  <div className="edit-group">
-                    Title: <input data-id={t.id} type="text" size="35" defaultValue={t.title}/>
-                    Description: <textarea data-id={t.id} cols="35" defaultValue={t.description}/>
-                    <button onClick={(e) => handleSaveClick(e)}> Save </button>
-                  </div>
-                </li>
-              </div>
+              <Task task={t} key={t.id} enableEdit={enableEdit} handleRemoveClick={handleRemoveClick} handleSaveClick={handleSaveClick} handleEditClick={handleEditClick}/>
             ))
           }
         </ul>
