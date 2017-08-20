@@ -1,6 +1,6 @@
 import TasksList from './TasksList'
 import { connect } from 'react-redux'
-import { enableEdit, edit, add } from '../actions/actions.js'
+import { enableEdit, edit, add, remove } from '../actions/actions.js'
 import API from '../api/api.js'
 
 const mapStateToProps = (state) => {
@@ -26,6 +26,12 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(add(item))
             };
             API.addTodo(ajaxCallback, item)
+        },
+        onClickRemove: (item) => {
+            const ajaxCallback = (item) => {
+                dispatch(remove(item))
+            };
+            API.removeTodo(ajaxCallback, item)
         },
     }
 }

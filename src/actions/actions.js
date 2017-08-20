@@ -27,3 +27,10 @@ export const add = ({data}) => {
         data,
     }
 }
+
+export const remove = ({data}) => {
+    return {
+        type: 'REMOVE',
+        data,
+    }
+}

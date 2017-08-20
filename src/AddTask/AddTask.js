@@ -13,8 +13,9 @@ const AddTask = ({tasks, onInputAddTodo}) => {
     })
     var inputTitle = inputs[0]
     var inputDescription = inputs[1]
+    var lastItemId = tasks.length > 0 ? tasks[tasks.length-1].id : 0
     var todo = {
-      id: tasks.length+1,
+      id: lastItemId+1,
       title: inputTitle.value,
       description: inputDescription.value,
     }

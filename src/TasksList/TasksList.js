@@ -2,7 +2,7 @@ import React from 'react';
 import AddTask from '../AddTask/AddTask';
 import removeImg from '../images/remove.png';
 
-const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInputAddTodo}) => {
+const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInputAddTodo, onClickRemove}) => {
   var classShow = "show"
   var classHide = "hide"
 
@@ -34,6 +34,25 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInp
       }
       onInputSaveTodo(todo)  
     }
+
+    const handleRemoveClick = (e) => {
+      var nodes = Array.from(e.target.parentNode.childNodes)
+      
+      var inputs = nodes.filter(n => {
+        if(n.dataset && n.dataset.id){
+          return n
+        }
+        return false
+      })
+
+      var taskId = inputs[0].dataset.id
+      var todo = {
+        id: taskId,
+      }
+      e.stopPropagation()
+      onClickRemove(todo)  
+    }
+    
     return (
       <div className="app">
           <AddTask tasks={tasks} onInputAddTodo={onInputAddTodo}/>
@@ -43,7 +62,7 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInp
           {
             tasks.map(t => (
               <div className="task-block" key={t.id}>
-                <img alt="remove button" className={"remove-img "+(t.id === enableEdit ? classHide : classShow)} src={removeImg}/>
+                <img onClick={(e) => handleRemoveClick(e)} alt="remove button" className={"remove-img "+(t.id === enableEdit ? classHide : classShow)} src={removeImg}/>
                 <li className={t.id === enableEdit ? classHide : classShow} onClick={(e) => handleDoubleClick(e)} data-id={t.id}> {t.title}
                   <div className="description"> {t.description} </div>
                 </li>

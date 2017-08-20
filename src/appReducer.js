@@ -35,6 +35,19 @@ const appReducer = (state = [], action) => {
         tasks: newTasks,
         enableEdit: undefined,
       }
+    case 'REMOVE':
+      task = action.data
+      newTasks = state.tasks.filter(t => {
+        if (t.id !== task.id) {
+          return t
+        }
+      })
+      console.log(newTasks)
+      return {
+        ...state,
+        tasks: newTasks,
+        enableEdit: undefined,
+      }
     default:
       return state
   }
