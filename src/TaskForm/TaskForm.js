@@ -1,7 +1,25 @@
 import React from 'react';
 
-const TaskForm = ({ tasks, task, addAction, editAction}) => {
+/**
+  * Component to render a task form to create or update a 
+  * task
+  * @param tasks represents the list of tasks
+  * @param task represents the task
+  * @param addAction represents the action to add a task
+  * @param editAction represents the action to edit a task
+  */
+const TaskForm = ({ 
+  tasks,
+  task,
+  addAction,
+  editAction
+}) => {
 
+  /**
+  * Handle button click, deciding if
+  * it is an add or update task button
+  * @param e click event
+  */
   const handleButtonClick = (e) => {
     var nodes = Array.from(e.target.parentNode.childNodes)
     var inputs = nodes.filter(n => {
@@ -18,7 +36,7 @@ const TaskForm = ({ tasks, task, addAction, editAction}) => {
     var action
 
     if(dataId !== "-1"){
-      //Update
+      // Update task
       todo = {
         id: inputTitle.dataset.id,
         title: inputTitle.value,
@@ -26,6 +44,7 @@ const TaskForm = ({ tasks, task, addAction, editAction}) => {
       }
       action = editAction
     } else {
+      // Add task
       var lastItemId = tasks.length > 0 ? tasks[tasks.length-1].id : 0
       todo = {
         id: lastItemId+1,
@@ -48,7 +67,6 @@ const TaskForm = ({ tasks, task, addAction, editAction}) => {
   var dataId = "-1"
   var taskTitle = ""
   var taskDescription = ""
-  // var handleButtonClick = handleAddClick
 
   if(task){
     sectionTitle = "Edit Task"
@@ -56,7 +74,6 @@ const TaskForm = ({ tasks, task, addAction, editAction}) => {
     btnTitle = "Save"
     taskTitle = task.title
     taskDescription = task.description
-    // handleButtonClick = handleSaveClick
   }
   
   return (

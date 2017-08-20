@@ -2,10 +2,29 @@ import React from 'react';
 import removeImg from '../images/remove.png'
 import TaskForm from '../TaskForm/TaskForm'
 
-const Task = ({task, enableEdit, handleSaveClick, onClickRemove, onTodoClick, editAction}) => {
+/**
+  * Component to render a task
+  * @param task represents the task
+  * @param enableEdit id of task if it is enabled for editing
+  * @param onClickRemove function to pass data to remove action
+  * @param onTodoClick function to pass data to enable edit action
+  * @param editAction represents the action to edit a task
+  */
+const Task = ({
+  task,
+  enableEdit,
+  onClickRemove,
+  onTodoClick,
+  editAction
+}) => {
   var classShow = "show"
   var classHide = "hide"
 
+  /**
+  * Get task id from form and send
+  * to re-render with edit form
+  * @param e click event
+  */
   const handleEditClick = (e) => {
     var id
     if(e.target.dataset.id){
@@ -16,6 +35,11 @@ const Task = ({task, enableEdit, handleSaveClick, onClickRemove, onTodoClick, ed
     onTodoClick(id)
   }
 
+  /**
+  * Get task id from form and send
+  * to remove task
+  * @param e click event
+  */
   const handleRemoveClick = (e) => {
     var nodes = Array.from(e.target.parentNode.childNodes)
     
@@ -42,7 +66,7 @@ const Task = ({task, enableEdit, handleSaveClick, onClickRemove, onTodoClick, ed
       </li>
       <li className={task.id === enableEdit ? classShow : classHide}>
         <div className="edit-group">
-          <TaskForm task={task} handleButtonClick={handleSaveClick} editAction={editAction}/>
+          <TaskForm task={task} editAction={editAction}/>
         </div>
       </li>
     </div>

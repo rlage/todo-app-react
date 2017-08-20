@@ -44,7 +44,6 @@ const appReducer = (state = [], action) => {
           return false
         }
       })
-      console.log(newTasks)
       return {
         ...state,
         tasks: newTasks,

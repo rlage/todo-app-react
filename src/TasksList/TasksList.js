@@ -2,7 +2,23 @@ import React from 'react'
 import TaskForm from '../TaskForm/TaskForm'
 import Task from '../Task/Task'
 
-const TasksList = ({tasks, enableEdit, onTodoClick, onInputSaveTodo, onInputAddTodo, onClickRemove}) => {
+/**
+  * Component to render a list of tasks
+  * @param tasks represents the list of tasks
+  * @param enableEdit id of task if it is enabled for editing
+  * @param onClickRemove function to pass data to remove action
+  * @param onTodoClick function to pass data to enable edit action
+  * @param onInputSaveTodo represents the action to update a task
+  * @param onInputAddTodo represents the action to add a task
+  */
+const TasksList = ({
+  tasks,
+  enableEdit,
+  onClickRemove,
+  onTodoClick,
+  onInputSaveTodo,
+  onInputAddTodo,
+}) => {
   
   if (tasks && tasks.length > 0) {
     return (
