@@ -19,6 +19,9 @@ const AddTask = ({tasks, onInputAddTodo}) => {
       title: inputTitle.value,
       description: inputDescription.value,
     }
+    if(todo.title === "" || todo.description === "") {
+      return false
+    }
     onInputAddTodo(todo)
       
   }

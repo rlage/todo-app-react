@@ -54,7 +54,7 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInp
     }
     
     return (
-      <div className="app">
+      <div>
           <AddTask tasks={tasks} onInputAddTodo={onInputAddTodo}/>
         <ul className="tasksList">
 
@@ -83,8 +83,10 @@ const TasksList = ({tasks, enableEdit, onTodoDoubleClick, onInputSaveTodo, onInp
   } else {
     return (
       <div>
-        <h1> Tasks </h1>
         <AddTask tasks={tasks} onInputAddTodo={onInputAddTodo}/>
+        <ul className="tasksList">
+          <h2> Tasks </h2>
+        </ul>
       </div>
     )
   }

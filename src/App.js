@@ -20,7 +20,9 @@ API.getTodos(ajaxCallback)
 const App = () => {
     return (
       <Provider store={store}>
-        <TasksListContainer/>
+        <div className="app">
+          <TasksListContainer/>
+        </div>
       </Provider>
     );
 }
