@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onTodoDoubleClick: (item) => {
+        onTodoClick: (item) => {
             dispatch(enableEdit(item))
         },
         onInputSaveTodo: (item) => {
